@@ -18,11 +18,16 @@ except ValueError:
     print("Error: debe ingresar un número válido para el precio")
     Precio= float (input ("ingrese el precio del producto: \n"))
 
-try:
-    VIPstatus = bool (input ("¿El cliente es VIP? (True/False): \n"))
-except ValueError:
-    print("Error: debe ingresar 'True' o 'False'")
-    VIPstatus = bool (input ("¿El cliente es VIP? (True/False): \n"))
+while True:
+    vip_input = input("¿El cliente es VIP? (s/n o True/False): \n").strip().lower()
+    if vip_input in ('true', 't', '1', 'yes', 'y', 'si', 's'):
+        VIPstatus = True
+        break
+    elif vip_input in ('false', 'f', '0', 'no', 'n'):
+        VIPstatus = False
+        break
+    else:
+        print("Entrada inválida. Responda 's'/'n', 'si'/'no' o 'True'/'False'.")
 
 Descuento = 0.1
 Precio_con_descuento = Precio * (1 - Descuento)
@@ -30,19 +35,16 @@ totalVIP = Cantidad * Precio_con_descuento
 Descuento_aplicado = Cantidad * Precio * Descuento
 subtotal = Cantidad * Precio
 
-def tipo_de_cliente(VIPstatus):
-    if VIPstatus == True:
-        print("Gracias", Cliente, "por comprar en nuestra tienda y ser parte de nuestros clientes VIP")
-        print("El subtotal es: ", subtotal)
-        print("El total a pagar es: ", totalVIP, "por su estatus vip")
-        print("El descuento aplicado es: ", Descuento_aplicado)  
-    elif VIPstatus == False:
-        print("Gracias", Cliente, "por comprar en nuestra tienda ")
-        print("El total es: ", subtotal)
-        print("El total a pagar si usted hiciera parte de nuestros clientes VIP seria de: ", totalVIP)
-        print("El descuento aplicado seria de: ", Descuento_aplicado)  
-    else:
-        print("Error: valor inválido para VIPstatus")
+if VIPstatus:
+    print("Gracias", Cliente, "por comprar en nuestra tienda y ser parte de nuestros clientes VIP")
+    print("El subtotal es: ", subtotal)
+    print("El total a pagar es: ", totalVIP, "por su estatus vip")
+    print("El descuento aplicado es: ", Descuento_aplicado)  
+else:
+    print("Gracias", Cliente, "por comprar en nuestra tienda ")
+    print("El total es: ", subtotal)
+    print("El total a pagar si usted hiciera parte de nuestros clientes VIP seria de: ", totalVIP)
+    print("El descuento aplicado seria de: ", Descuento_aplicado)
          
 
 
