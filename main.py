@@ -5,18 +5,26 @@ Cliente= str (input ("ingrese el nombre del cliente: \n"))
 Producto= str (input ("ingrese el producto que desea comprar: \n"))
 
 
-try:
-    Cantidad= int (input ("ingrese la cantidad del producto que desea comprar: \n"))
-except ValueError:
-    print("Error: debe ingresar un número entero válido para la cantidad")
-    Cantidad= int (input ("ingrese la cantidad del producto que desea comprar: \n"))
+while True:
+    try:
+        Cantidad = int(input("ingrese la cantidad del producto que desea comprar: \n"))
+        if Cantidad < 0:
+            print("Error: la cantidad no puede ser negativa.")
+            continue
+        break
+    except ValueError:
+        print("Error: debe ingresar un número entero válido para la cantidad")
 
 
-try:
-    Precio= float (input ("ingrese el precio del producto: \n"))
-except ValueError:
-    print("Error: debe ingresar un número válido para el precio")
-    Precio= float (input ("ingrese el precio del producto: \n"))
+while True:
+    try:
+        Precio = float(input("ingrese el precio del producto: \n"))
+        if Precio < 0:
+            print("Error: el precio no puede ser negativo.")
+            continue
+        break
+    except ValueError:
+        print("Error: debe ingresar un número válido para el precio")
 
 while True:
     vip_input = input("¿El cliente es VIP? (s/n o True/False): \n").strip().lower()
